@@ -24,9 +24,8 @@ library(tidyverse)
 
 # Big Picture Goal
 
-We are going to contribute an extension of the Hall of Fame data in the Lahman data package for the year 2025.
-
-# Step-by-Step
+Let's assume we are the maintainer of the Lahman database, and we need to scrape the Hall of Fame 2025 data.
+<!-- We are going to contribute an extension of the Hall of Fame data in the Lahman data package for the year 2025. -->
 
 In this activity we are going to
 
@@ -56,7 +55,7 @@ The deliverables are (1) individual reports (Rmd) and (2) the dataset.
 
 ---
 
-# Step-by Step
+# Create Your Lab Repo in Github Classroom
 
 1. Accept the link to Github Classroom shared in the announcement/chat. 
   
@@ -64,15 +63,19 @@ The deliverables are (1) individual reports (Rmd) and (2) the dataset.
   
   - Check if your team number already exists - if it does, join the team with the right number. If it doesn't exist yet, create it yourself.
 
-2. Start a new RStudio project on your local machine using the link to the github repository. (Connect your local R project to your Github repo)
+2. Start a new RStudio project on your local machine using the link to the Lab repository. (Connect your local R project to your GitHub Lab repo)
 
-3. For each individual, create a new RMarkdown file called `progress-report-<your github handle>.Rmd` (Mine would be called `progress-report-willju-wangqian.Rmd`). Delete everything from line 12 on. 
+---
 
-4. Save the file and add it to your github repository. 
+# Create Your Individual Report RMD
+
+3. After your Lab repo is cloned to your local, for each individual, create a new RMarkdown file called `progress-report-<your github handle>.Rmd` (Mine would be called `progress-report-willju-wangqian.Rmd`). Delete everything from line 12 on. 
+
+4. Save this RMD file to your Lab repository. 
 
 5. Use your created RMarkdown file for your lab notes - every individual should try to scrape the dataset. Keep track of what you are doing in your own Rmd file, so you have an easier time afterward to see what worked and what didn't.
 
-4. Commit the file and push. We are ready to roll!
+6. Commit the file and push. We are ready to roll!
 
 
 ---
@@ -81,7 +84,8 @@ The deliverables are (1) individual reports (Rmd) and (2) the dataset.
 
 The Lahman data package is based on [Sean Lahman](https://www.seanlahman.com/)'s  Baseball  [Database](https://www.seanlahman.com/baseball-archive/statistics/). 
 
-The `HallOfFame` table is a part of this set of tables and has data up to 2024. We have tried to scrape the 2023 data during our lectures. Now, we are aiming for the 2025 data.
+The `HallOfFame` table does contain the 2025 data. You can compare your scraped data with the 2025 data to see if your scraping result is correct.
+<!-- The `HallOfFame` table is a part of this set of tables and has data up to 2024. We have tried to scrape the 2023 data during our lectures. Now, we are aiming for the 2025 data. -->
 
 ## Baseball Reference 
 
@@ -110,22 +114,25 @@ head(HallOfFame, 3)
 
 As a team, create the Hall of fame data for the year 2025. Each of you might result in a dataset. Compared your results in the team and select one as your final result.
 
-Save this final result by appending the new data frame(s) (your cleaned scraped data) to the existing data `HallOfFame` in `Lahman` package.
+<!-- Save this final result by appending the new data frame(s) (your cleaned scraped data) to the existing data `HallOfFame` in `Lahman` package. -->
+
+Save your cleaned scraped data as a `csv` file.
 
 ```{r fig.width= 12, fig.height = 4, warning = FALSE}
 HallOfFame %>% 
   ggplot(aes(x = yearID, fill = inducted)) +
   geom_bar() +
-  xlim(c(1936, 2024))
+  xlim(c(1936, 2025))
 ```
 
 ---
 
 # Submission
 
-1. Push changes to your file `progress-report-<github handle>.Rmd` to the github repo. 
+1. Each individual: push changes to your file `progress-report-<github handle>.Rmd` to the GitHub Lab repo. We will check the commit history of your own RMD file for grading.
 
-2. Save the expanded `HallOfFame` as a csv file `HallOfFame.csv`. Push `HallOfFame.csv` to the team's repository.
+2. For the team: keep one `HallOfFame_2025.csv` file in your Lab repo.
+<!-- Save the expanded `HallOfFame` as a csv file `HallOfFame.csv`. Push `HallOfFame.csv` to the team's repository. -->
 
 ---
 
@@ -231,6 +238,6 @@ readr::write_csv(dframe, file="some-other-file.csv")
 ---
 
 
-Due date: You have time until Monday, Apr 28 at 11:59 pm to submit the final RMmarkdown file.
+Due date: You have time until Monday, Nov 24 at 11:59 pm to submit the final RMmarkdown file.
 
 One team member: upload the team's repo link to Canvas (just to signal to the instructor that you are done)
