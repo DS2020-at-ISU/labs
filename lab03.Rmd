@@ -1,6 +1,6 @@
 ---
 title: "DS 2020 - lab #3: Avengers' Perils"
-author: Will Ju
+author: DS 2020
 output:
   xaringan::moon_reader:
     lib_dir: libs
