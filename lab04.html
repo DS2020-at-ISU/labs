@@ -3,8 +3,8 @@
   <head>
     <title>DS 2020 - lab #4: Scraping (into) the Hall of Fame</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Will Ju" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <meta name="author" content="DS 2020" />
+    <script src="libs/header-attrs-2.30/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # DS 2020 - lab #4: Scraping (into) the Hall of Fame
 ]
 .author[
-### Will Ju
+### DS 2020
 ]
 
 ---
@@ -114,7 +114,7 @@ Use the `rvest` package to download and parse data tables for Hall of Fame votin
 What steps are necessary to get the scraped data into the shape as the `HallOfFame` data table:
 
 
-```r
+``` r
 library(Lahman)
 head(HallOfFame, 3)
 ```
@@ -136,7 +136,7 @@ As a team, create the Hall of fame data for the year 2025. Each of you might res
 Save your cleaned scraped data as a `csv` file.
 
 
-```r
+``` r
 HallOfFame %&gt;% 
   ggplot(aes(x = yearID, fill = inducted)) +
   geom_bar() +
@@ -159,7 +159,7 @@ HallOfFame %&gt;%
 # Some Data Tidying tricks
 
 
-```r
+``` r
 library(rvest)
 url &lt;- "https://www.baseball-reference.com/awards/hof_2025.shtml"
 html &lt;- read_html(url)
@@ -169,7 +169,7 @@ tables &lt;- html_table(html)
 Should you be in the situation, that a data set does not have any names, but the names are stored as the first line of records:
 
 
-```r
+``` r
 head(tables[[1]], 3)
 ```
 
@@ -178,8 +178,8 @@ head(tables[[1]], 3)
 ##   ``    ``           ``    ``    ``    ``    ``    ``    ``    ``    ``    ``   
 ##   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
 ## 1 Rk    Name         YoB   Votes %vote HOFm  HOFs  Yrs   WAR   WAR7  JAWS  Jpos 
-## 2 1     Ichiro Suzu… 1st   393   99.7% 235   44    19    60.0  43.7  51.8  56.0 
-## 3 2     CC Sabathia  1st   342   86.8% 128   48    19    62.3  39.4  50.8  61.3 
+## 2 1     Ichiro Suzu… 1st   393   99.7% 235   42    19    60.0  43.7  51.9  56.0 
+## 3 2     CC Sabathia  1st   342   86.8% 128   48    19    62.3  39.4  50.8  61.4 
 ## # ℹ 27 more variables: `Batting Stats` &lt;chr&gt;, `Batting Stats` &lt;chr&gt;,
 ## #   `Batting Stats` &lt;chr&gt;, `Batting Stats` &lt;chr&gt;, `Batting Stats` &lt;chr&gt;,
 ## #   `Batting Stats` &lt;chr&gt;, `Batting Stats` &lt;chr&gt;, `Batting Stats` &lt;chr&gt;,
@@ -197,7 +197,7 @@ head(tables[[1]], 3)
 Obtain the column names from the first line as a variable. Overwrite the column names with the actual column names. Then delete the first line.
 
 
-```r
+``` r
 data &lt;- tables[[1]]
 actual_col_names &lt;- data[1, ]
 colnames(data) &lt;- actual_col_names
@@ -212,7 +212,7 @@ head(data, 3)
 The code below is just an example. Make sure that all numeric variables are indeed numeric. 
 
 
-```r
+``` r
 data$Votes &lt;- as.numeric(data$Votes)
 ```
 
@@ -223,7 +223,7 @@ data$Votes &lt;- as.numeric(data$Votes)
 **`parse_number`** from the `readr` package
 
 
-```r
+``` r
 readr::parse_number(c("34%", "10th", "1.0"))
 ```
 
@@ -236,7 +236,7 @@ readr::parse_number(c("34%", "10th", "1.0"))
 Usage `gsub(pattern, replacement, x)`:  replace all occurrences of `pattern` in vector `x` by the string `replacement`. 
 
 
-```r
+``` r
 x &lt;- c("David Ortiz", "X-Barry Bonds", "X-Roger Clemens")
 
 gsub("X-", "Oh no! ", x)
@@ -246,7 +246,7 @@ gsub("X-", "Oh no! ", x)
 ## [1] "David Ortiz"          "Oh no! Barry Bonds"   "Oh no! Roger Clemens"
 ```
 
-```r
+``` r
 gsub("X-", "", x)
 ```
 
@@ -260,7 +260,7 @@ gsub("X-", "", x)
 If two data frames have the same variable names, we can use the command **`rbind`** (row bind) to concatenate them. 
 
 
-```r
+``` r
 x1 &lt;- data.frame(id=1:2, name=c("A", "B"))
 x2 &lt;- data.frame(id=3:4, name=c("C", "D"))
 
@@ -275,7 +275,7 @@ rbind(x1, x2)
 ## 4  4    D
 ```
 
-```r
+``` r
 dframe &lt;- rbind(x1, x2)
 ```
 
@@ -288,7 +288,7 @@ Don't forget to save the result!
 **`write.csv`** writes a data frame into a comma-separated values file (extension csv):
 
 
-```r
+``` r
 write.csv(dframe, file="some-file.csv", row.names = FALSE)
 ```
 
@@ -299,7 +299,7 @@ Make sure to not export the row names, otherwise each successive read &amp; writ
 
 
 
-```r
+``` r
 readr::write_csv(dframe, file="some-other-file.csv")
 ```
 
@@ -308,16 +308,16 @@ readr::write_csv(dframe, file="some-other-file.csv")
 ---
 
 
-Due date: You have time until Monday, Nov 24 at 11:59 pm to submit the final RMmarkdown file.
+Due date: You have time until Monday, May 4th at 11:59 pm to submit the final RMmarkdown file.
 
 One team member: upload the team's repo link to Canvas (just to signal to the instructor that you are done)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

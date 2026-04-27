@@ -1,6 +1,6 @@
 ---
 title: "DS 2020 - lab #4: Scraping (into) the Hall of Fame"
-author: Will Ju
+author: DS 2020
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -238,6 +238,6 @@ readr::write_csv(dframe, file="some-other-file.csv")
 ---
 
 
-Due date: You have time until Monday, Nov 24 at 11:59 pm to submit the final RMmarkdown file.
+Due date: You have time until Monday, May 4th at 11:59 pm to submit the final RMmarkdown file.
 
 One team member: upload the team's repo link to Canvas (just to signal to the instructor that you are done)
