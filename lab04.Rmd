@@ -20,24 +20,28 @@ library(tidyverse)
 <!--<img src="" class="cover" height=1500>-->
 
 # Lab #4: Scraping (into) the Hall of Fame
+
 ---
 
 # Big Picture Goal
 
-Let's assume we are the maintainer of the Lahman database, and we need to scrape the Hall of Fame 2025 data.
-<!-- We are going to contribute an extension of the Hall of Fame data in the Lahman data package for the year 2025. -->
+Let's assume we are checking and validating the Hall of Fame 2026 data using online data and the Lahman database.
 
 In this activity we are going to
 
 1. identify suitable websites with data on Baseball's Hall of Fame
-2. write web scrapers with the goal to 
-    
-    a. automate the download process, 
-    b. and - as much as possible - clean the data automatically, or at least identify potential problems, to, finally, 
-    c. use the scrapers in future years
-    
-3. use the scraper to get data for the year 2025.
-4. document the process. 
+
+2. write web scrapers with the goal to
+
+   a. automate the download process,
+   b. and - as much as possible - clean the data automatically, or at least identify potential problems, to, finally,
+   c. use the scrapers in future years
+
+3. use the scraper to get data for the year 2026.
+
+4. compare the scraped data to the `HallOfFame` table in the `Lahman` package.
+
+5. document the process.
 
 The deliverables are (1) individual reports (Rmd) and (2) the dataset.
 
@@ -49,19 +53,19 @@ The deliverables are (1) individual reports (Rmd) and (2) the dataset.
 
 2. Find the other members of your team and sit with them.
 
-3. Introduce yourself to each other. 
+3. Introduce yourself to each other.
 
-4. Go to https://ds202-at-isu.github.io/labs/lab04.html and follow the instructions.
+4. Go to [https://ds202-at-isu.github.io/labs/lab04.html](https://ds202-at-isu.github.io/labs/lab04.html) and follow the instructions.
 
 ---
 
 # Create Your Lab Repo in Github Classroom
 
-1. Accept the link to Github Classroom shared in the announcement/chat. 
-  
-  - This link will ask you to log in to github. Select your name from the list by clicking on it. 
-  
-  - Check if your team number already exists - if it does, join the team with the right number. If it doesn't exist yet, create it yourself.
+1. Accept the link to Github Classroom shared in the announcement/chat.
+
+* This link will ask you to log in to github. Select your name from the list by clicking on it.
+
+* Check if your team number already exists - if it does, join the team with the right number. If it doesn't exist yet, create it yourself.
 
 2. Start a new RStudio project on your local machine using the link to the Lab repository. (Connect your local R project to your GitHub Lab repo)
 
@@ -69,52 +73,105 @@ The deliverables are (1) individual reports (Rmd) and (2) the dataset.
 
 # Create Your Individual Report RMD
 
-3. After your Lab repo is cloned to your local, for each individual, create a new RMarkdown file called `progress-report-<your github handle>.Rmd` (Mine would be called `progress-report-willju-wangqian.Rmd`). Delete everything from line 12 on. 
+3. After your Lab repo is cloned to your local, for each individual, create a new RMarkdown file called `progress-report-<your github handle>.Rmd` (Mine would be called `progress-report-willju-wangqian.Rmd`). Delete everything from line 12 on.
 
-4. Save this RMD file to your Lab repository. 
+4. Save this RMD file to your Lab repository.
 
 5. Use your created RMarkdown file for your lab notes - every individual should try to scrape the dataset. Keep track of what you are doing in your own Rmd file, so you have an easier time afterward to see what worked and what didn't.
 
 6. Commit the file and push. We are ready to roll!
 
-
 ---
 
 # Data Background
 
-The Lahman data package is based on [Sean Lahman](https://www.seanlahman.com/)'s  Baseball  [Database](https://www.seanlahman.com/baseball-archive/statistics/). 
+The Lahman data package is based on [Sean Lahman](https://www.seanlahman.com/)'s  Baseball  [Database](https://www.seanlahman.com/baseball-archive/statistics/).
 
-The `HallOfFame` table does contain the 2025 data. You can compare your scraped data with the 2025 data to see if your scraping result is correct.
-<!-- The `HallOfFame` table is a part of this set of tables and has data up to 2024. We have tried to scrape the 2023 data during our lectures. Now, we are aiming for the 2025 data. -->
+The `HallOfFame` table does contain some Hall of Fame data for 2026. You can compare your scraped data with the 2026 data to see what matches and what does not match.
 
-## Baseball Reference 
+## Baseball Reference
 
-The site baseball-reference.com has grown out of Sean Lahman's work and is now maintained independently. 
+The site baseball-reference.com has grown out of Sean Lahman's work and is now maintained independently.
 
-Incidentally, it also has tables with Hall of Fame information, e.g. for 2025: 
+Incidentally, it also has tables with Hall of Fame information, e.g. for 2026:
 
-https://www.baseball-reference.com/awards/hof_2025.shtml
+[https://www.baseball-reference.com/awards/hof_2026.shtml](https://www.baseball-reference.com/awards/hof_2026.shtml)
 
 ---
+
+# Important note
+
+The Baseball Reference page and the Lahman `HallOfFame` table do not have to match row-for-row.
+
+Baseball Reference shows the full BBWAA ballot for 2026.
+
+The Lahman `HallOfFame` table stores official Hall of Fame voting records in a different format, and it may include different voting bodies.
+
+This means that your scraped data may have more rows than the Lahman data for 2026.
+
+That is okay.
+
+Part of the goal is to understand how the two data sources are structured and where they differ.
+
+---
+
 # Scrape the data
 
-Use the `rvest` package to download and parse data tables for Hall of Fame voting records. 
+Use the `rvest` package to download and parse data tables for Hall of Fame voting records.
 
 # Clean the data
 
-What steps are necessary to get the scraped data into the shape as the `HallOfFame` data table:
+What steps are necessary to get the scraped data into a useful format?
+
+You should think about questions such as:
+
+1. Which table from the website do you need?
+2. Are the variable names correct?
+3. Which columns do you want to keep?
+4. Which variables should be numeric?
+5. How can you identify who was inducted?
 
 ```{r}
 library(Lahman)
 head(HallOfFame, 3)
 ```
+
+---
+
+# Compare to Lahman
+
+The Lahman data can help us understand what information is stored in the `HallOfFame` table.
+
+```{r}
+HallOfFame %>% 
+  filter(yearID == 2026)
+```
+
+You should compare your scraped data to the Lahman data.
+
+Possible questions to think about:
+
+1. How many rows are in your scraped data?
+2. How many rows are in the Lahman data for 2026?
+3. Why might these numbers be different?
+4. Which players were inducted according to the Baseball Reference BBWAA table?
+5. Are the same players represented in Lahman?
+
 ---
 
 # Deliverable: data
 
-As a team, create the Hall of fame data for the year 2025. Each of you might result in a dataset. Compared your results in the team and select one as your final result.
+As a team, create a cleaned Hall of Fame voting dataset for the year 2026. Each of you might result in a dataset. Compare your results in the team and select one as your final result.
 
-<!-- Save this final result by appending the new data frame(s) (your cleaned scraped data) to the existing data `HallOfFame` in `Lahman` package. -->
+Your final dataset should include the cleaned version of the Baseball Reference Hall of Fame data.
+
+At minimum, your final dataset should contain:
+
+1. candidate name
+2. year
+3. votes
+4. percent of vote
+5. whether the candidate was inducted
 
 Save your cleaned scraped data as a `csv` file.
 
@@ -122,7 +179,7 @@ Save your cleaned scraped data as a `csv` file.
 HallOfFame %>% 
   ggplot(aes(x = yearID, fill = inducted)) +
   geom_bar() +
-  xlim(c(1936, 2025))
+  xlim(c(1936, 2026))
 ```
 
 ---
@@ -131,8 +188,7 @@ HallOfFame %>%
 
 1. Each individual: push changes to your file `progress-report-<github handle>.Rmd` to the GitHub Lab repo. We will check the commit history of your own RMD file for grading.
 
-2. For the team: keep one `HallOfFame_2025.csv` file in your Lab repo.
-<!-- Save the expanded `HallOfFame` as a csv file `HallOfFame.csv`. Push `HallOfFame.csv` to the team's repository. -->
+2. For the team: keep one `HallOfFame_2026.csv` file in your Lab repo.
 
 ---
 
@@ -140,7 +196,7 @@ HallOfFame %>%
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(rvest)
-url <- "https://www.baseball-reference.com/awards/hof_2025.shtml"
+url <- "https://www.baseball-reference.com/awards/hof_2026.shtml"
 html <- read_html(url)
 tables <- html_table(html)
 ```
@@ -150,6 +206,7 @@ Should you be in the situation, that a data set does not have any names, but the
 ```{r}
 head(tables[[1]], 3)
 ```
+
 ---
 
 # Variable Names in Line 1
@@ -170,11 +227,36 @@ head(data, 3)
 
 # Check variable types
 
-The code below is just an example. Make sure that all numeric variables are indeed numeric. 
+The code below is just an example. Make sure that all numeric variables are indeed numeric.
 
 ```{r, message=FALSE, eval=FALSE}
 data$Votes <- as.numeric(data$Votes)
 ```
+
+For percentages, `parse_number` is useful:
+
+```{r, message=FALSE, eval=FALSE}
+data$percent_vote <- readr::parse_number(data$`%vote`)
+```
+
+---
+
+# Possible cleaning step
+
+After scraping the 2026 table, one possible cleaned version might look something like this:
+
+```{r, message=FALSE, eval=FALSE}
+hof_2026 <- data %>% 
+  select(Name, Votes, `%vote`) %>% 
+  mutate(
+    yearID = 2026,
+    Votes = as.numeric(Votes),
+    percent_vote = readr::parse_number(`%vote`),
+    inducted = ifelse(percent_vote >= 75, "Y", "N")
+  )
+```
+
+This is only a starting point. You may need to adjust your code depending on how your scraped table is structured.
 
 ---
 
@@ -186,9 +268,9 @@ data$Votes <- as.numeric(data$Votes)
 readr::parse_number(c("34%", "10th", "1.0"))
 ```
 
-**`gsub`** from R base: 
+**`gsub`** from R base:
 
-Usage `gsub(pattern, replacement, x)`:  replace all occurrences of `pattern` in vector `x` by the string `replacement`. 
+Usage `gsub(pattern, replacement, x)`:  replace all occurrences of `pattern` in vector `x` by the string `replacement`.
 
 ```{r}
 x <- c("David Ortiz", "X-Barry Bonds", "X-Roger Clemens")
@@ -197,11 +279,31 @@ gsub("X-", "Oh no! ", x)
 
 gsub("X-", "", x)
 ```
+
+---
+
+# Comparing Data sets
+
+You can compare your scraped data to the Lahman data for 2026.
+
+```{r, eval=FALSE}
+lahman_2026 <- HallOfFame %>% 
+  filter(yearID == 2026)
+
+hof_2026 %>% 
+  count(inducted)
+
+lahman_2026 %>% 
+  count(votedBy, inducted)
+```
+
+Remember that the two sources may not match exactly because they are not organized in exactly the same way.
+
 ---
 
 # Combining Data sets
 
-If two data frames have the same variable names, we can use the command **`rbind`** (row bind) to concatenate them. 
+If two data frames have the same variable names, we can use the command **`rbind`** (row bind) to concatenate them.
 
 ```{r}
 x1 <- data.frame(id=1:2, name=c("A", "B"))
@@ -225,19 +327,14 @@ write.csv(dframe, file="some-file.csv", row.names = FALSE)
 
 Make sure to not export the row names, otherwise each successive read & write of the file adds another column in the front.
 
-
 **`write_csv`** is not part of base, but faster, and does not convert special characters into `.`
-
 
 ```{r, eval=FALSE}
 readr::write_csv(dframe, file="some-other-file.csv")
 ```
 
-
-
 ---
 
-
-Due date: You have time until Monday, May 4th at 11:59 pm to submit the final RMmarkdown file.
+Due date: You have time until Monday, May 4th at 11:59 pm to submit the final RMarkdown file.
 
 One team member: upload the team's repo link to Canvas (just to signal to the instructor that you are done)
