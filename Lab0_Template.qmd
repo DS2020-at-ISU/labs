@@ -1,0 +1,54 @@
+---
+title: "Lab #0"
+author: "Prof Daddysman"
+date: "2026-08-26"
+format: 
+    html:
+        embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| purl: false
+#| include: false
+knitr::opts_chunk$set(
+    echo = FALSE, #removes all R code from output
+    message = FALSE, #removes all messages
+    warning = FALSE #removes all warnings
+)
+```
+
+```{r}
+#| label: metadata
+#| purl: true
+#----------------------------------------------
+# Name: Prof Daddysman
+# Date: 2026-08-26
+# Purpose: Example qmd for Lab 0 rendering
+#----------------------------------------------
+```
+
+# Purpose
+
+This document is an example `qmd` (Quarto) file that can be rendered. You will submit this file and the rendered HTML output on Canvas.
+
+# GitHub
+
+My GitHub username is **daddysmanja**.
+
+# Changes
+
+In this document, complete the following:
+
+* In the header information:
+    + Change the "author" to your name
+    + Update the date if needed
+* In the second R code chunk:
+    + Change to your name
+    + Update the date if needed
+* Update your GitHub name in the GitHub section
+
+# Completing the assignment
+
+* Render the file in the console using `quarto::quarto_render("Lab0_Template.qmd")`
+* Upload your edited `qmd` file and the `HTML` file created to Canvas
