@@ -41,14 +41,15 @@ My GitHub username is **daddysmanja**.
 In this document, complete the following:
 
 * In the header information:
-    + Change the "author" to your name
-    + Update the date if needed
-* In the second R code chunk:
-    + Change to your name
-    + Update the date if needed
-* Update your GitHub name in the GitHub section
+    + Change the "author" to your name (2 points)
+    + Update the date to today's date if needed (1 point)
+* In the second R code chunk (label: metadata):
+    + Change "Name" to your name (2 points)
+    + Update the date to today's date if needed (1 point)
+* Update your GitHub name in the GitHub section (2 points)
 
 # Completing the assignment
 
+* Save the file in your R project folder
 * Render the file in the console using `quarto::quarto_render("Lab0_Template.qmd")`
-* Upload your edited `qmd` file and the `HTML` file created to Canvas
+* Upload your edited `qmd` file and the `HTML` file created to Canvas (1 point each file)
