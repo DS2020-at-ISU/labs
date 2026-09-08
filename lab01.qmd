@@ -1,0 +1,121 @@
+---
+title: "DS 2020 - Lab #1: let's get gitting!"
+author: Prof Daddysman
+date: "`r Sys.Date()`"
+format: 
+    revealjs:
+        width: 1680
+        height: 1120
+        embed-resources: true
+---
+
+# Overview
+
+```{r} 
+#| label: setup
+#| echo: false
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this activity we are going to practice how to collaborate using GitHub and Positron.  
+With your team members you will work on sharing and editing files on GitHub. 
+
+![](https://happygitwithr.com/img/watch-me-diff-watch-me-rebase-smaller.png)
+
+
+
+## Getting Ready
+
+1. Identify your team! Go to Canvas and find out which team you are in for Lab 1.
+
+1. Find the other members of your team and sit with them.
+
+1. Introduce yourself to each other. 
+
+1. If someone is missing from your group, let the instructor or TA know.
+
+1. Follow the instructions on [today's slides](https://ds2020-at-isu.github.io/labs/lab01.html).
+
+
+
+## Join Your Lap Repo in Classroom 50
+
+Accept the link to Classroom 50 shared on today's Canvas page.
+  
+  - This link will ask you to log in to GitHub. Select your name from the list by clicking on it.  
+  
+  - Accept Lab #1 assignment in our course.
+
+  - Check if your team number already exists as a group.
+    - If it does, ask the team member who created it to add you.
+        - You can add members by clicking on your group and selecting "add members"
+    - If it doesn't exist yet, create it yourself.
+        - Name the team the same as it is on Canvas (e.g., team1, team2, etc.)
+        - Add your group members that are here today (using their GitHub username)
+
+
+
+## What You Need to Do
+
+As you complete the following steps, take notes on the process. These notes will go into your file for a final commit.
+
+1. If this is the first time you are using `git` on your machine, you can start with [chapter 7](https://happygitwithr.com/hello-git)
+    * If `git` is not installed on your computer, follow the steps in [chapter 6](https://happygitwithr.com/install-git)
+
+2. Open a [git repository in Positron](https://positron.posit.co/git.html#open-a-git-repository) from the existing git repository for the assignment
+    1. New > New Folder from Git 
+    1. In "Repository URL", past the URL of your group's GitHub repository. It will be something like this: `https://github.com/jennybc/myrepo.git`. You can find this under the `<>Code` button; just copy the `HTTPS` URL.
+    1. Set the parent folder to be the folder you created for this class.
+    1. Select "OK"
+
+3. In Positron, modify the `README.md` file, e.g., add your name and some sample text ("My first commit!").
+
+## What You Need to Do (continued)
+
+4. Commit this change to your local repo. 
+    1. Select "Source Control" in the left pane (looks like a branch)
+    1. Under "Changes", select the `+` to stage changes
+    1. Add a commit message above the blue commit button
+    1. Select "Commit"
+    1. Once your changes commit, select "Sync". This will push changes and pull new changes from others.
+
+5. Confirm the changes by returning to your browser.
+
+If you run into an error, describe it and the error message. As a group, try to solve the problem. Write up the solution.
+
+Finally, collect all of your experiences and make it into one cohesive document. Use the `README.md` file of the repo for this document, i.e., there should be a list of all steps in above (#1-5), followed by a description of all the errors you encountered and your solutions. 
+
+
+
+## Example `README.md` in the End
+
+```
+### step 3
+
+- Will's note: 
+
+- Craig's note: 
+
+### step 4
+
+- Will's note:
+
+- Craig's note
+```
+
+
+
+## Grading & Submission
+
+**Grading:** We expect equal contributions from all members in a team. For the grading we will make use of the github commit history to verify that everybody contributed. 
+
+
+**Submission:**
+All submissions to the github repo will be automatically uploaded for grading once the due date is passed. 
+
+
+Due date: Monday at 5 pm. You have time until Monday at 11:59 pm to submit final edits to the `README.md` file. Make sure that there are no commit issues.
+
+
+
+
