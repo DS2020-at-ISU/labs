@@ -34,11 +34,11 @@ With your team members you will work on sharing and editing files on GitHub.
 
 1. If someone is missing from your group, let the instructor or TA know.
 
-1. Follow the instructions on [today's slides](https://ds2020-at-isu.github.io/labs/lab01.html).
+1. Follow the instructions on [today's slides](https://ds2020-at-isu.github.io/labs/lab01.html) (also on Canvas).
 
 
 
-## Join Your Lap Repo in Classroom 50
+## Join Your Lab Repo in Classroom 50
 
 Accept the link to Classroom 50 shared on today's Canvas page.
   
@@ -110,8 +110,7 @@ Finally, collect all of your experiences and make it into one cohesive document.
 **Grading:** We expect equal contributions from all members in a team. For the grading we will make use of the github commit history to verify that everybody contributed. 
 
 
-**Submission:**
-All submissions to the github repo will be automatically uploaded for grading once the due date is passed. 
+**Submission:** All submissions to the github repo will be automatically available for grading once the due date is passed.
 
 
 Due date: Monday at 5 pm. You have time until Monday at 11:59 pm to submit final edits to the `README.md` file. Make sure that there are no commit issues.
