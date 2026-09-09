@@ -77,7 +77,7 @@ As you complete the following steps, take notes on the process. These notes will
     1. Under "Changes", select the `+` to stage changes
     1. Add a commit message above the blue commit button
     1. Select "Commit"
-    1. Once your changes commit, select "Sync". This will push changes and pull new changes from others.
+    1. Once your changes commit, select "Sync Changes". This will push changes and pull new changes from others.
 
 5. Confirm the changes by returning to your browser.
 
